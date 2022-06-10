@@ -1,0 +1,12 @@
+{
+  "name": "learn-node",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">\r   <h1>learn-nodejs</h1>\r   <p>对nodejs接口设计，数据库设计，运维部署的探索</p>\r </div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
