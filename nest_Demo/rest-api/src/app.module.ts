@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-10-21 16:55:35
  * @LastEditors: fg
- * @LastEditTime: 2022-10-21 17:21:43
+ * @LastEditTime: 2022-10-24 14:11:57
  * @Description: 应用程序根模块
  */
 
@@ -12,6 +12,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { CatModule } from "./cat/cat.module";
 import { ErrorsInterceptor } from './common/errors.interceptor';
 
 /**
@@ -19,7 +20,7 @@ import { ErrorsInterceptor } from './common/errors.interceptor';
  * */
 @Module({
   // TypeOrmModule.forRoot() 默认加载项目根目录下的 ormconfig.json 配置文件用于配置数据库连接
-  imports: [TypeOrmModule.forRoot()], //导入其他模块的集合
+  imports: [TypeOrmModule.forRoot(), CatModule], //导入其他模块的集合
   controllers: [AppController],//当前模块的控制器集合
   providers: [
     {
