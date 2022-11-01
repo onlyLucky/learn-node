@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-11-01 14:08:53
  * @LastEditors: fg
- * @LastEditTime: 2022-11-01 15:23:31
+ * @LastEditTime: 2022-11-01 15:56:38
  * @Description: 文档代码
  */
 
@@ -134,3 +134,17 @@ function isString(x: any): x is string {
   return typeof x === "string";
 }
 
+const inhabitantsOfMunich = 1_464_301;
+const distanceEarthSunInKm = 149_600_000;
+const fileSystemPermission = 0b111_111_000;
+const bytes = 0b1111_10101011_11110000_00001101;
+
+const RE_NON_DIGIT = /[^0-9]/gu;
+
+function removeNonDigits(str) {
+  str = str.replace(RE_NON_DIGIT, '');
+  return Number(str);
+}
+removeNonDigits('123_456')
+removeNonDigits('149,600,000')
+removeNonDigits('1,407,836')
