@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-10-31 16:22:18
  * @LastEditors: fg
- * @LastEditTime: 2022-10-31 16:29:33
+ * @LastEditTime: 2022-11-01 16:09:26
  * @Description: content
  */
 
@@ -25,3 +25,9 @@ interface _StringifiedFoo {
   prop3: string;
   prop4: string;
 }
+
+type Clone<T> = {
+  [K in keyof T]: T[K];
+}
+
+export { }
