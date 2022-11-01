@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-11-01 14:08:53
  * @LastEditors: fg
- * @LastEditTime: 2022-11-01 14:27:50
+ * @LastEditTime: 2022-11-01 15:23:31
  * @Description: 文档代码
  */
 
@@ -66,3 +66,71 @@ let abc: ABC = {
 };
 
 console.log('abc:', abc);
+
+
+// 类型保护
+
+interface Admin {
+  name: string;
+  privileges: string[];
+}
+
+interface Employee {
+  name: string;
+  startDate: Date;
+}
+
+type UnknownEmployee = Employee | Admin;
+
+function printEmployeeInformation(emp: UnknownEmployee) {
+  console.log("Name: " + emp.privileges);
+  if ("privileges" in emp) {
+    console.log("Privileges: " + emp.privileges);
+  }
+  if ("startDate" in emp) {
+    console.log("Start Date: " + emp.startDate);
+  }
+}
+
+function padLeft(value: string, padding: string | number) {
+  if (typeof padding === 'number') {
+    return Array(padding + 1).join(" ") + value;
+  }
+  if (typeof padding === "string") {
+    return padding + value;
+  }
+  throw new Error(`Expected string or number, got '${padding}'.`);
+}
+
+interface Padder {
+  getPaddingString(): string;
+}
+
+class SpaceRepeatingPadder implements Padder {
+  constructor(private numSpaces: number) { }
+  getPaddingString() {
+    return Array(this.numSpaces + 1).join(" ");
+  }
+}
+class StringPadder implements Padder {
+  constructor(private value: string) { }
+  getPaddingString() {
+    return this.value;
+  }
+}
+
+let padder: Padder = new SpaceRepeatingPadder(6)
+
+if (padder instanceof SpaceRepeatingPadder) {
+  // padder的类型收窄为 'SpaceRepeatingPadder'
+}
+
+
+function isNumber(x: any): x is number {
+  return typeof x === "number";
+}
+
+function isString(x: any): x is string {
+  return typeof x === "string";
+}
+
