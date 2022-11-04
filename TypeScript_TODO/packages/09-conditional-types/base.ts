@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-11-03 15:52:40
  * @LastEditors: fg
- * @LastEditTime: 2022-11-03 16:00:52
+ * @LastEditTime: 2022-11-04 09:48:24
  * @Description: 条件判断
  */
 type LiteralType<T> = T extends string ? 'string' : 'other';
@@ -50,4 +50,4 @@ export type LiteralToPrimitive<T> = T extends number
 
 _universalAdd('toto', '599'); // string
 _universalAdd(599, 1); // number
-_universalAdd(10n, 10n); // bigint
+_universalAdd(10n, 10n); // bigint 
