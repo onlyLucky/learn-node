@@ -2,8 +2,8 @@
  * @Author: fg
  * @Date: 2022-11-03 16:10:46
  * @LastEditors: fg
- * @LastEditTime: 2022-11-03 16:22:44
- * @Description: content
+ * @LastEditTime: 2022-11-07 10:21:40
+ * @Description: infer
  */
 type FunctionReturnType<T extends Func> = T extends (...args: any[]) => infer R
   ? R
@@ -66,3 +66,4 @@ type ReverseKeyValue<T extends Record<string, string>> = T extends Record<
   : never;
 
 type ReverseKeyValueResult1 = ReverseKeyValue<{ key: 'value' }>; // { "value": "key" }
+
