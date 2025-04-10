@@ -4,7 +4,7 @@ import { SimpleFactory } from "./01_Factory/sample";
 import { ConcreteFactory } from "./02_Abstract_Factory/index";
 import { CustomPrototype } from "./03_Prototype/clone";
 import { TurretBuilder } from "./04_Builder/turret";
-import { Singleton } from "./05_Singleton";
+import { Singleton,LazySingleton } from "./05_Singleton/instance";
 
 const chalk = require('chalk');
 class Example {
@@ -55,13 +55,11 @@ class Example {
     const turret = new TurretBuilder()
     console.log(turret.setHP(1000).setATK(10).setDEF(10).build())
   }
-
-
   public singletonExample() {
     console.log(chalk.red("=====05 SINGLETON EXAMPLE======"));
-    const singleton1 = Singleton.getInstance();
-    const singleton2 = Singleton.getInstance();
-    console.log(singleton1 === singleton2); // 输出：true
+    const singleton = Singleton.getInstance();
+    const lazySingleton = LazySingleton.getInstance();
+    console.log(singleton === lazySingleton); // 输出：false
   }
   public doAllExample() {
     console.log(chalk.blue("=====TS DESIGN PATTERNS EXAMPLE======"));
