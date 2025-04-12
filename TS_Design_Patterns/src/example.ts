@@ -5,6 +5,9 @@ import { ConcreteFactory } from "./02_Abstract_Factory/index";
 import { CustomPrototype } from "./03_Prototype/clone";
 import { TurretBuilder } from "./04_Builder/turret";
 import { Singleton,LazySingleton } from "./05_Singleton/instance";
+import { Adapter } from "./06_Adapter/class";
+import {  ObjectAdapter,ObjectAdaptee } from "./06_Adapter/object";
+import { ComAdapter } from "./06_Adapter/interface";
 
 const chalk = require('chalk');
 class Example {
@@ -61,6 +64,22 @@ class Example {
     const lazySingleton = LazySingleton.getInstance();
     console.log(singleton === lazySingleton); // 输出：false
   }
+
+  public adapterExample() {
+    console.log(chalk.red("=====06 ADAPTER EXAMPLE======"));
+    // 使用适配器模式
+    // 类适配器
+    const targetClass = new Adapter();
+    targetClass.request(); 
+    // 对象适配器
+    const targetObject = new ObjectAdapter(new ObjectAdaptee());
+    targetObject.request();
+    // 接口适配器
+    const targetInterface = new ComAdapter();
+    targetInterface.run();
+    targetInterface.attack();
+  }
+  
   public doAllExample() {
     console.log(chalk.blue("=====TS DESIGN PATTERNS EXAMPLE======"));
     /* console.log(chalk.red("This is red text"));
@@ -75,6 +94,7 @@ class Example {
     this.prototypeExample();
     this.builderExample();
     this.singletonExample();
+    this.adapterExample();
   }
 
 }
