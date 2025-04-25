@@ -8,6 +8,7 @@ import { Singleton,LazySingleton } from "./05_Singleton/instance";
 import { Adapter } from "./06_Adapter/class";
 import {  ObjectAdapter,ObjectAdaptee } from "./06_Adapter/object";
 import { ComAdapter } from "./06_Adapter/interface";
+import {Bridge} from "./07_Bridge/index";
 
 const chalk = require('chalk');
 class Example {
@@ -79,6 +80,25 @@ class Example {
     targetInterface.run();
     targetInterface.attack();
   }
+
+  public bridgeExample() {
+    console.log(chalk.red("=====07 BRIDGE EXAMPLE======"));
+    // 使用桥接模式
+    function clientCode(abstraction: Bridge.Abstraction) {
+      console.log(abstraction.operation());
+    }
+    
+    // 测试桥接模式
+    let implementation = new Bridge.ConcreteImplementationA();
+    let abstraction = new Bridge.BridgeAbstraction(implementation);
+    clientCode(abstraction);
+    
+    console.log('Bridge',Bridge);
+    
+    implementation = new Bridge.ConcreteImplementationB();
+    abstraction = new Bridge.BridgeAbstraction(implementation);
+    clientCode(abstraction);
+  }
   
   public doAllExample() {
     console.log(chalk.blue("=====TS DESIGN PATTERNS EXAMPLE======"));
@@ -95,9 +115,11 @@ class Example {
     this.builderExample();
     this.singletonExample();
     this.adapterExample();
+    this.bridgeExample();
   }
 
 }
+
 
 export function createExample() {
   const example = new Example();
