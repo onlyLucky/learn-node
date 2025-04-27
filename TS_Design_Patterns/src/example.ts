@@ -9,6 +9,7 @@ import { Adapter } from "./06_Adapter/class";
 import {  ObjectAdapter,ObjectAdaptee } from "./06_Adapter/object";
 import { ComAdapter } from "./06_Adapter/interface";
 import {Bridge} from "./07_Bridge/index";
+import { ObjectTree } from "./08_Composite/ObjectTree";
 
 const chalk = require('chalk');
 class Example {
@@ -99,6 +100,41 @@ class Example {
     abstraction = new Bridge.BridgeAbstraction(implementation);
     clientCode(abstraction);
   }
+
+  public compositeExample() {
+    console.log(chalk.red("=====08 COMPOSITE EXAMPLE======"));
+    function clientCode(component: ObjectTree.Component) {
+      console.log(`RESULT: ${component.operation()}`);
+    }
+
+    const simple = new ObjectTree.Leaf();
+    console.log('Client: I\'ve got a simple component:');
+    clientCode(simple);
+    console.log('');
+
+    const tree = new ObjectTree.Composite();
+    const branch1 = new ObjectTree.Composite();
+    branch1.add(new ObjectTree.Leaf());
+    branch1.add(new ObjectTree.Leaf());
+    const branch2 = new ObjectTree.Composite();
+    branch2.add(new ObjectTree.Leaf());
+    tree.add(branch1);
+    tree.add(branch2);
+    console.log('Client: Now I\'ve got a composite tree:');
+    clientCode(tree);
+    console.log('');
+
+    function clientCode2(component1: ObjectTree.Component, component2: ObjectTree.Component) {
+      if (component1.isComposite()) {
+        component1.add(component2);
+      }
+      console.log(`RESULT: ${component1.operation()}`);
+    }
+
+    console.log('Client: I don\'t need to check the components classes even when managing the tree:');
+    clientCode2(tree, simple);
+
+  }
   
   public doAllExample() {
     console.log(chalk.blue("=====TS DESIGN PATTERNS EXAMPLE======"));
@@ -116,6 +152,7 @@ class Example {
     this.singletonExample();
     this.adapterExample();
     this.bridgeExample();
+    this.compositeExample();
   }
 
 }
