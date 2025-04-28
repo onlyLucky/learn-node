@@ -1,5 +1,7 @@
 package factory_method;
-import factory_method.buttons.*;
+
+/* 工厂模式 */
+
 import factory_method.factory.*;
 public class Demo {
   private static Dialog dialog;
