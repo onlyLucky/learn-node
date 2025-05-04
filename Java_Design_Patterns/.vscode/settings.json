@@ -3,5 +3,10 @@
     "java.project.outputPath": "dist",
     "java.project.referencedLibraries": [
         "dist/**/*.jar"
+    ],
+    "java.import.gradle.java.home": "",
+    "java.jdt.ls.java.home": "",
+    "cSpell.words": [
+        "wrappee"
     ]
 }
