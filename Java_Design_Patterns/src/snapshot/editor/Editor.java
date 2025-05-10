@@ -20,4 +20,14 @@ public class Editor extends java.awt.Canvas {
     allShapes.clear();
     allShapes.add(shapes);
   }
+
+  public void undo() {
+    if (history.undo())
+      canvas.repaint();
+  }
+
+  public void redo() {
+    if (history.redo())
+      canvas.repaint();
+  }
 }
