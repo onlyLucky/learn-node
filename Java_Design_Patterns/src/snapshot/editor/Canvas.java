@@ -1,27 +1,26 @@
 package snapshot.editor;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
+import javax.swing.border.Border;
 
-class Canvas extends java.awt.Canvas {
+public class Canvas extends java.awt.Canvas {
   private Editor editor;
   private JFrame frame;
   private static final int PADDING = 10;
 
-  Canvas(Editor editor, JFrame frame) {
+  Canvas(Editor editor){
     this.editor = editor;
     createFrame();
-    attachKeyboardListeners();
+    // attachKey
   }
 
-  private void createFrame(){
+  private void createFrame() {
     frame = new JFrame();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     frame.setLocationRelativeTo(null);
-    
+
     JPanel contentPanel = new JPanel();
     Border padding = BorderFactory.createEmptyBorder(PADDING, PADDING, PADDING, PADDING);
     contentPanel.setBorder(padding);
@@ -34,10 +33,9 @@ class Canvas extends java.awt.Canvas {
     contentPanel.add(this);
     frame.setVisible(true);
     contentPanel.setBackground(Color.LIGHT_GRAY);
-
   }
 
-  private void attachKeyboardListeners(){
+  private void attachKeyboardListeners() {
     addKeyListener(new KeyAdapter() {
       @Override
       public void keyPressed(KeyEvent e) {
@@ -54,4 +52,5 @@ class Canvas extends java.awt.Canvas {
       }
     });
   }
+
 }
